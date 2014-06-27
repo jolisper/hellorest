@@ -44,22 +44,6 @@ function sendResponse(data, req, res) {
 		});
 }
 
-app.post('/textos', function(req, res){
-	
-	var texto = req.body.texto;
-	
-	if(!texto) {
-		res.send(406, 'Texto invalido');
-		
-	} else { 
-		sendResponse(restdb.add(texto), req, res);
-	}
-	
-});
-
-app.get('/textos', function(req, res){	
-	sendResponse(restdb.getAll(), req, res);
-});
 
 app.get('/textos/:id', function(req, res){
 	
@@ -69,6 +53,19 @@ app.get('/textos/:id', function(req, res){
 		res.send(404, 'Not Found');
 	} else {
 		sendResponse(text, req, res);
+	}
+	
+}); 
+
+app.post('/textos', function(req, res){
+	
+	var texto = req.body.texto;
+	
+	if(!texto) {
+		res.send(406, 'Texto invalido');
+		
+	} else { 
+		sendResponse(restdb.add(texto), req, res);
 	}
 	
 });
@@ -90,6 +87,10 @@ app.put('/textos/:id', function(req, res){
 			sendResponse(restdb.set(id, textonew), req, res);
 		}
 	}
+});
+
+app.get('/textos', function(req, res){	
+	sendResponse(restdb.getAll(), req, res);
 });
 
 console.log("listen on 3000")
