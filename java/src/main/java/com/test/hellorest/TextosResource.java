@@ -1,5 +1,6 @@
 package com.test.hellorest;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.ws.rs.FormParam;
@@ -63,10 +64,11 @@ public class TextosResource {
 	
 	@GET
 	@Path("/textos")
-	@Produces({"application/json", "text/xml"})
+	@Produces({"application/json", "text/xml", "text/plain"})
 	public Collection<Texto> all() {
 		 
-		return db.getAll();
+		return new ArrayList<>(db.getAll());
 	}
+	
 
 }
