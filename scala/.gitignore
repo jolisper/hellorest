@@ -1,0 +1,16 @@
+/bin
+logs/*
+target
+target/*
+*.DS_Store
+*.releaseBackup
+release.properties
+*.iml
+.idea
+.idea/*
+
+.cache
+.classpath
+.project
+.settings
+
